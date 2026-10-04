@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="70" y="24" font-size="16" fill="#222222">Training and validation cross entropy, epochs 1-20</text>
+<text x="16" y="52" font-size="12" fill="#444444">nats</text>
+<line x1="70" y1="40" x2="70" y2="490" stroke="#888888"/>
+<line x1="70" y1="490" x2="940" y2="490" stroke="#888888"/>
+<text x="70" y="522" font-size="12" fill="#444444">progress across 20 measured points</text>
+<text x="62" y="44" font-size="12" text-anchor="end" fill="#444444">1.507</text>
+<text x="62" y="490" font-size="12" text-anchor="end" fill="#444444">0.5075</text>
+<line x1="482.11" y1="40" x2="482.11" y2="490" stroke="#666666" stroke-dasharray="4 4"/><text x="486.11" y="56" font-size="12" fill="#666666">epoch 10</text>
+<polyline fill="none" stroke="#1f4e79" stroke-width="2" points="70.00,40.00 115.79,337.92 161.58,388.41 207.37,413.58 253.16,429.30 298.95,440.25 344.74,448.34 390.53,454.38 436.32,458.48 482.11,461.03 527.89,462.29 573.68,463.26 619.47,464.21 665.26,465.05 711.05,465.90 756.84,466.62 802.63,467.25 848.42,467.99 894.21,468.62 940.00,469.30"/><polyline fill="none" stroke="#b85c38" stroke-width="2" points="70.00,326.20 115.79,403.31 161.58,432.70 207.37,448.75 253.16,461.13 298.95,469.42 344.74,474.67 390.53,479.03 436.32,481.82 482.11,483.26 527.89,483.89 573.68,485.04 619.47,485.73 665.26,486.56 711.05,487.24 756.84,488.03 802.63,488.47 848.42,489.18 894.21,489.19 940.00,490.00"/>
+<text x="70" y="524" fill="#1f4e79" font-size="14">training</text><text x="290" y="524" fill="#b85c38" font-size="14">validation</text>
+</svg>
