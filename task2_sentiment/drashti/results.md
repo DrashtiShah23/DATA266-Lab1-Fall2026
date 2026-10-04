@@ -160,11 +160,11 @@ experimental_2: accuracy [0.951868, 0.956054], macro F1 [0.951868, 0.956047], MC
 
 baseline versus experimental_1: both correct 34769, baseline only 841, experimental only 1196, both wrong 1194, statistic 61.519882, p-value 4.38295e-15.
 
-YOUR INPUT REQUIRED: Interpret this McNemar result in the context of the model comparison.
+McNemar only looks at the discordant cells: cases one model gets right and the other wrong. Here the CNN fixes 1,196 baseline mistakes while introducing 841 new ones, so the net win is +355 on the same 38,000 test ids. The p-value is far below 0.05, so I treat the accuracy gain (0.937 → 0.946) as a real paired difference, not noise. That lines up with the non-overlapping bootstrap CIs for accuracy and macro F1 in `metrics_report.csv`, and with the ROC/PR curves where experimental_1 sits above the baseline.
 
 baseline versus experimental_2: both correct 35006, baseline only 604, experimental only 1244, both wrong 1146, statistic 220.952922, p-value 5.6044e-50.
 
-YOUR INPUT REQUIRED: Interpret this McNemar result in the context of the model comparison.
+The GRU comparison is even clearer. It rescues 1,244 baseline errors and only loses 604, so the discordant ratio is about 2:1 in its favor. The statistic (~221) and tiny p-value say this is not a fluke of a few hard reviews. Accuracy 0.9539 and MCC 0.908 sit above both other models, and the ROC AUC (~0.991) matches that ordering. I still would not claim “GRU is always best for every review type”—the slice table and the 20 error cases show remaining failure modes—but on this official test set the paired test supports ranking GRU over baseline.
 
 ### Robustness slices
 
@@ -194,16 +194,16 @@ Evidence directory: `task2_sentiment/drashti/outputs/evaluation/`. The metric ta
 
 ## Strengths
 
-YOUR INPUT REQUIRED
+All three from-scratch models clear 93% official-test accuracy with balanced precision/recall, so the bag-of-words-style baseline is already strong on this binary Yelp task. The CNN and GRU push further without pretrained embeddings. Calibration is decent (ECE under about 0.013 for the GRU; Brier scores fall as accuracy rises). The ROC and PR plots under `outputs/evaluation/` show a clean ranking: GRU ≥ CNN > baseline across thresholds, not just at 0.5. Training stayed leakage-safe: vocab and length stats came from development data only, and checkpoint pick used validation macro F1.
 
 ## Weaknesses
 
-YOUR INPUT REQUIRED
+Errors concentrate where reviews are mixed, sarcastic, or structured as “pros then cons.” The GRU’s lowest positive probabilities on true positives (`test-22807`, `test-24111`) show it can overreact to complaint vocabulary even when the label is positive overall. Near-threshold mistakes (distance from 0.5 under 0.001) mean a tiny probability nudge would flip the call—those are not stable decisions. Long reviews are truncated at 207 tokens, so late “would stay again” sentences can be cut off while early complaints remain (`test-21813`). Slice error rates are a bit higher on long text for the GRU than on medium.
 
 ## Limitations
 
-YOUR INPUT REQUIRED
+Binary Yelp polarity is not the same as 5-star nuance; a 3-star “ok but…” review does not exist here. Stopword removal and lowercasing strip some polarity cues (“not”, tone of “Wow”). The models never see characters, emojis as designed tokens, or discourse structure beyond what a CNN window or GRU state can keep. Metrics are on one fixed test split; McNemar significance does not guarantee the same gap on another domain (hotels vs restaurants, other languages). No teammate comparison yet, so “unique architecture” is local only.
 
 ## Comparative conclusions
 
-YOUR INPUT REQUIRED
+I would ship experimental_2 (GRU) as the primary model: best accuracy, F1, MCC, and ROC/PR, with McNemar against the baseline clearly significant. Experimental_1 (CNN) is the right second place—faster than the GRU (~8.4k vs ~0.8k examples/sec) with most of the accuracy gain over the mean-embedding baseline. The baseline remains a useful floor: if a fancier model only matched 0.937, I would not trust the extra capacity. Looking at the confusion matrices, none of the three collapses to predicting one class; the remaining work is mixed-sentiment and truncation cases, not class imbalance.

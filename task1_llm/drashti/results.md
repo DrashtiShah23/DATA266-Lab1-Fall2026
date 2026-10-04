@@ -201,4 +201,12 @@ The original 10-epoch SVG files remain in `task1_llm/drashti/outputs/` and in `t
 
 ## Personal interpretation
 
-YOUR INPUT REQUIRED: Explain what these metrics say about the model, including strengths, weaknesses, limitations, and whether the extra epochs were worth training, in your own words.
+The loss curves in `task1_llm/drashti/outputs/epochs_1_to_20/` are the clearest story. Validation cross entropy falls from about 0.87 after epoch 1 to 0.52 at epoch 10, then keeps edging down to 0.5075 at epoch 20. Training loss stays a little above validation the whole way, so the model is not memorizing the 100k-story split; the gap is small and stable rather than blowing up. That matches the generalization gap metric of about +0.046 at the selected checkpoint.
+
+Strengths. Next-character accuracy around 0.84 and perplexity about 1.66 mean the model usually knows the next letter in TinyStories-style prose. Bits per character under 0.74 is in line with a small character GPT on this domain. Training was stable after the first epoch: NaN count is 0, and the gradient-norm plot shows the big spikes concentrated early, then settling. Greedy samples still look like children’s stories rather than random characters.
+
+Weaknesses. Distinct-n and the repeated 4-gram rate show that “looks like English” is not the same as “tells a clean story.” The failure-analysis candidates are the proof: greedy decoding locks onto a local phrase (“He was so excited…”, “the box and the box”) and keeps replaying it. Coherence also drifts (zoo prompt becomes cars and trucks). So the metrics that look strong are mostly local character prediction; long-range story sense is still weak.
+
+Limitations. This is a 839k-parameter character model with context 128, trained on one member split of TinyStories. It will not transfer to adult prose, and greedy decoding is a harsh lens—temperature sampling can look less stuck, but that does not fix the underlying preference for safe, repeated n-grams. Metrics are also tied to this vocabulary and split; a different seed or tokenizer would move the numbers.
+
+Were epochs 11–20 worth it? Yes, but modestly. Validation CE improved from 0.5225 (epoch 10) to 0.5075 (epoch 20), and epoch 20 was the best of the twenty, so selection was not just “train longer for free.” The learning-rate curve for the continuation is flat at 3e-05, so those epochs are fine-tuning at a small step size rather than a second warm start. The cost was about another 30 minutes on MPS. I would keep epoch 20 as the reported checkpoint; I would not expect another ten epochs at the same LR to buy a similar jump.

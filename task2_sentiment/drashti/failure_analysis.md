@@ -29,11 +29,11 @@ Processed text:
 
     wow love place everything clean new n ngreat place come relax worth try n ncheers n neric van nguyen nvisited april 2012
 
-YOUR INPUT REQUIRED: Error type
+**Error type:** Label noise / positive surface cues on a negative label
 
-YOUR INPUT REQUIRED: Observation
+**Observation:** The text is almost entirely praise ("Wow love the place", "clean and new", "worth a try"). The model’s ~1.0 positive probability matches the words on the page. Either the gold label is wrong, or this is sarcasm that never shows in the tokens after preprocessing.
 
-YOUR INPUT REQUIRED: One testable fix
+**One testable fix:** Spot-check a sample of high-confidence FP/FN against the raw Yelp label; if many look like label flips, report label noise rate and do not treat those as model bugs.
 
 ## Case 2: confident_false_positive
 
@@ -54,11 +54,11 @@ Processed text:
 
     small businesses espresso royale give champaign urbana character visit 6th daniel location often nthe undergrad library location however undergrad library location full tired harried students academic professionals us dont want ugl pretty old tell nthis place usually packed youll wait addition applied job friend mine worked previously told managers name asked manager could see behind counter told employee id asked tell wasnt around gave look shock walked away ni later spoke employee friend friend said felt horrible could tell knew real story laughed glasses wine nnonetheless heres point espresso royale deserves money employees kick asses espresso provides quality coffee buy beans roasted locally columbia st always always always hot fresh dark roast coffee hand espresso royale gets vote starbucks every single day nnote parking around location not faint heart
 
-YOUR INPUT REQUIRED: Error type
+**Error type:** Mixed sentiment / late complaint buried after praise
 
-YOUR INPUT REQUIRED: Observation
+**Observation:** Early tokens praise Espresso Royale (quality coffee, better than Starbucks) while later text describes a bad hiring/manager experience. After stopword removal the positive coffee language still dominates, so the GRU predicts positive with high confidence.
 
-YOUR INPUT REQUIRED: One testable fix
+**One testable fix:** Ablate by scoring only the first half vs second half of the review; if halves disagree, add a two-segment feature or down-weight the first 50 tokens and re-check F1 on contains_negation.
 
 ## Case 3: confident_false_positive
 
@@ -79,11 +79,11 @@ Processed text:
 
     leonard leonard leonard really even leonard works leonard goes work takes 8 hour break called staples follow print order told going call back time break went store ole leonard busy cell phone help upside place nice female works copy print center
 
-YOUR INPUT REQUIRED: Error type
+**Error type:** Sarcasm / name repetition without clear polarity words
 
-YOUR INPUT REQUIRED: Observation
+**Observation:** "leonard leonard leonard" and workplace snark never say "bad" cleanly; the model may latch onto neutral service words ("works", "nice female") and miss that the review is mocking a specific employee.
 
-YOUR INPUT REQUIRED: One testable fix
+**One testable fix:** Add a character n-gram or punctuation feature for heavy repetition/caps, or keep a small set of discourse markers that stopword removal currently deletes, then retrain GRU only.
 
 ## Case 4: confident_false_positive
 
@@ -104,11 +104,11 @@ Processed text:
 
     food bomb everything kitchen right nmusic good usually pretty loud nbring group people sit bar youll get served fastest servers make scarce dont talk much n worth trip fried pickles
 
-YOUR INPUT REQUIRED: Error type
+**Error type:** Slang polarity inversion ("food bomb")
 
-YOUR INPUT REQUIRED: Observation
+**Observation:** "Food bomb" and "fried pickles" read positive in slang, but the gold label is negative; servers "make scarce" is the complaint. The embedding likely scores "bomb"/"good" style tokens as positive.
 
-YOUR INPUT REQUIRED: One testable fix
+**One testable fix:** Build a small slang lexicon (bomb, fire, mid) from training data frequency × label correlation; flip or soft-label those tokens and measure FP rate on short reviews.
 
 ## Case 5: confident_false_positive
 
@@ -129,11 +129,11 @@ Processed text:
 
     average far steakhouses go rib eye tasty but little cooked didnt complain flavor still fantastic thought process quite order ive better sell id say show content want great high end steak id recommend ruth chris lgs flemings mortons want show much money make rain jean georges place offered pork chop 99 special cut steak 199 prices ill personally fly anywhere country serve best steak ever not born silver spoon mouth good financial values probably go somewhere else friends named justin b diddy snoop second car happens bentley youll fit right service good ambiance great food fantastic service bottom line oh damn bring platinum black card
 
-YOUR INPUT REQUIRED: Error type
+**Error type:** Comparative / aspirational language misread as praise
 
-YOUR INPUT REQUIRED: Observation
+**Observation:** The review compares steakhouses, says flavor was "fantastic," then recommends other places and jokes about platinum cards. Overall tone is "not worth it for me," but local positive adjectives dominate the GRU state.
 
-YOUR INPUT REQUIRED: One testable fix
+**One testable fix:** Train a secondary head on whether the review recommends returning; use disagreement with the main head as a reject option near the decision boundary.
 
 ## Case 6: confident_false_negative
 
@@ -154,11 +154,11 @@ Processed text:
 
     edit really change service since last posted n nhorrible service n nused favorite pizza city reasonable price but im rethinking altercation server refused split check paying cash proceeded disrespect party table telling us not give attitude n nsorry bella notte but not children dont care youre working hard doesnt give excuse disrespect paying customers like
 
-YOUR INPUT REQUIRED: Error type
+**Error type:** Edit / update structure: old rant after a later positive edit cue
 
-YOUR INPUT REQUIRED: Observation
+**Observation:** Starts with "edit really change service" then a long "horrible service" story. Gold is positive (perhaps after an edit), but the model sees the rant vocabulary and goes strongly negative.
 
-YOUR INPUT REQUIRED: One testable fix
+**One testable fix:** Detect leading "edit"/"update" segments and score the newest segment separately; compare accuracy on reviews whose raw text contains "\n\nedit".
 
 ## Case 7: confident_false_negative
 
@@ -179,11 +179,11 @@ Processed text:
 
     review pharmacy not need member use pharmacy self paying user generic plavix cost 90 day supply around 25 contrast 45 walmart 200 target shopko price difference unbelievable begs question price health insurance carriers forced pay no wonder premiums high charged 200 220 prices pay shop prices
 
-YOUR INPUT REQUIRED: Error type
+**Error type:** Off-topic complaint framed as a positive pharmacy tip
 
-YOUR INPUT REQUIRED: Observation
+**Observation:** The writer is happy about a $25 generic price vs Walmart, but most tokens are about insurance premiums and "price difference unbelievable." Complaint-shaped language swamps the endorsement.
 
-YOUR INPUT REQUIRED: One testable fix
+**One testable fix:** Mask or down-weight sentences that mention insurance/premiums when the business category is pharmacy; test whether FN rate on price-comparison positives drops.
 
 ## Case 8: confident_false_negative
 
@@ -204,11 +204,11 @@ Processed text:
 
     ever wonder lots extra garbage recyclables either cant fit bins missed bulk trash pickup day alternatively looking something little bit different lazy summer day n nok ok kidding aside may find yesterday broken boxes odd shaped trash old floor lamps etc fit bins waste facility allows phoenix residents dump bulk trash recyclables free month n nto get facility drive 27th avenue buckeye aka no mans land drive likely see long line commercial vehicles waiting daily weekly dump bypass line go r sign says something like visitors say mean without stopped able well according city website supposed show drivers license recent water bill let but no one stopped us asked proof anything n nwe drove around around facility following signs directed us visitors drop area finally arrived massive pile garbage literally tons guys pick trucks dumping yard clippings well ordinary people like us wanted garage less cluttered warning wise place stinks filled garbage ground wet bit slippery wore flip flops dumb go might want wear long sleeved shirt old crappy tennis shoes dont give crap n nafter dumping trash looked around recycling drop random employee sitting umbrella told us bins full dump massive pile cardboard boxes trash pile real ringing endorsement city sponsored recycling huh told didnt want trash recyclable material suggested going employee trailers dumping recycling bin n ni admit coming way city facility dedicated proper recycling felt bit odd dumping boxes tiny bin wasnt much bigger bin home felt gone public swimming pool found size inflatable one also wondered boxes would even get recycled fortunately guy city truck showed towards end unloading gave us thumbs waited us done could unload bin take materials wherever recyclables go die reborn new environmentally friendly objects n nour trip facility adventure thats sure addition spite educational benefits seeing inner workings citys solid waste operations entertainment value unfamiliar sights sounds smells got rid massive piles trash boxes left move early home improvement projects one fell swoop cant beat
 
-YOUR INPUT REQUIRED: Error type
+**Error type:** Long narrative with mild positivity and trash imagery
 
-YOUR INPUT REQUIRED: Observation
+**Observation:** A bulk-trash facility review that is ultimately informative/positive still spends many tokens on "garbage", "stinks", "slippery." Those words pull the class toward negative despite the free-service appreciation.
 
-YOUR INPUT REQUIRED: One testable fix
+**One testable fix:** Increase max sequence length above 207 for an ablation, or mean-pool CNN features over chunks and average chunk logits so early trash words cannot dominate the whole state.
 
 ## Case 9: confident_false_negative
 
@@ -229,11 +229,11 @@ Processed text:
 
     last night several parents came 15 children celebrate 9 year olds 4th grade graduation 9 15 pm bartender expressed not place children running around law liability issue anything happen premise children running bar parents continued drink upstairs claiming watch open park way third round drinks bartender told no longer welcomed due fact kids unsupervised well customers cleared expressing whether bar childcare center one father even started swearing telling none business children offended completely took advantage rude not mention children bar 10 00pm evening say bartender cordial mind right thing
 
-YOUR INPUT REQUIRED: Error type
+**Error type:** Story where the narrator sides with staff against customers
 
-YOUR INPUT REQUIRED: Observation
+**Observation:** Parents let kids run in a bar; bartender ejects them. The reviewer supports the bartender, so the label is positive, but "swearing", "rude", "not welcomed" look like a bad visit.
 
-YOUR INPUT REQUIRED: One testable fix
+**One testable fix:** Add an explicit "whose side" cue by tagging quoted speech vs narrator sentences; evaluate FN rate on contains_negation slice.
 
 ## Case 10: confident_false_negative
 
@@ -254,11 +254,11 @@ Processed text:
 
     get table spend money vegas nb throw cash table bouncer nc wait forever nd ditch guys n nthose choices no way around dont care hot guys outnumber party get smack oh yeah dress hot always increases chances show body n nwhen went stood longest line ever couldnt even see club door started worse disneyland people werent willing drop money table booooo nor want pay bouncer well guess makes us like every group thats standing line bunch guys forever 92 days gave went blush want go prepared either separate guys willing pay
 
-YOUR INPUT REQUIRED: Error type
+**Error type:** Scene-setting complaints before a soft recommendation
 
-YOUR INPUT REQUIRED: Observation
+**Observation:** Vegas club line / bouncer / pay-to-enter frustration fills the review; the closing advice is pragmatic rather than glowing. Gold positive, model very negative.
 
-YOUR INPUT REQUIRED: One testable fix
+**One testable fix:** Use only the last 40 tokens for a second probability and average with the full-sequence score; measure whether FN confidence falls on long nightlife reviews.
 
 ## Case 11: near_threshold
 
@@ -279,11 +279,11 @@ Processed text:
 
     im not usually one small restaurants especially unfamiliar areas but heard uncle joes pizza travel site decided try family loved never town fairly easy find great food great price disappointed returned vegas could not make back downtown eat definitely recommend
 
-YOUR INPUT REQUIRED: Error type
+**Error type:** Near-threshold / fragile decision
 
-YOUR INPUT REQUIRED: Observation
+**Observation:** True positive review with p≈0.4997—basically a coin flip. Text is clearly positive ("family loved", "definitely recommend"), so the model is under-confident rather than content-confused.
 
-YOUR INPUT REQUIRED: One testable fix
+**One testable fix:** Plot reliability on short positives; if under-confident, lightly temperature-scale logits on validation before freezing the 0.5 threshold.
 
 ## Case 12: near_threshold
 
@@ -304,11 +304,11 @@ Processed text:
 
     well delicious don think chicken marinara no green peppers sheesh ate 6 hours ago want another right
 
-YOUR INPUT REQUIRED: Error type
+**Error type:** Near-threshold / informal spelling
 
-YOUR INPUT REQUIRED: Observation
+**Observation:** "well delicious don think chicken marinara" is positive but messy. Probability sits on 0.5. Typo "don" and missing words weaken the signal.
 
-YOUR INPUT REQUIRED: One testable fix
+**One testable fix:** Add simple spell-correction or keep raw character 3-grams alongside word IDs; re-score this id and other near-threshold short reviews.
 
 ## Case 13: near_threshold
 
@@ -329,11 +329,11 @@ Processed text:
 
     personally never step foot inside belmont soda shoppe ever born raise belmont fan original belmont drug store couple saturdays ago run towards end run stopped soda shoppe asked small cup tap water sunny 95 degrees outside hot thirsty guy behind counter said no charges everything wasnt like asking large scoop ice cream belmont small town friendly community obviously people not understand best support local businesses downtown belmont area assure never receive support share experience belmont soda shoppe everyone know
 
-YOUR INPUT REQUIRED: Error type
+**Error type:** Near-threshold / indignation that is still a negative review
 
-YOUR INPUT REQUIRED: Observation
+**Observation:** Refused free water; writer vows never to return. That should be negative, but community/support language ("support local businesses") nudges p just over 0.5.
 
-YOUR INPUT REQUIRED: One testable fix
+**One testable fix:** Count explicit refusal verbs ("said no", "never") as hard negative features in a logistic stack on top of GRU probs; check this case flips correctly without hurting overall F1.
 
 ## Case 14: near_threshold
 
@@ -354,11 +354,11 @@ Processed text:
 
     2 5 stars n napparently place serious vegas roots used east tropicana affiliations liberace but new location westside attached bounty hunter albertsons shopping center n nfirst things first really nice service server friendly attentive hepful n nthe atmosphere leaves much desired since place attached bar bounty hunter random booths tables thrown clearly empty space thats n nthere isnt wine list cocktails offerings bounty hunter um no thank dont want coors light veal n nthey serve piping hot french bread crusty outside chewy trhe middle good n nwe mussels start steamed white wine lots butter lots garlic lots chili spicy good flavor cooked nice but hubs dissapointed previously frozen n nwe cup minestrone didnt look like vegetable soup used ok flavor but salty brown sludge n ndad manicotti best item yummy creamy ricotta mozarella good n nwe shared veal cant remember name dish veal super tender topped copious amounts slurried brown sauce sliced mushrooms spaghetti marinara side not veal marsala but sauce definitely marsala sauce mussels like flavor marsala but seemed strange ended everything n ndad licked spumoni dessert clean shared tortoni essentially vanilla ice cream mixed frangelico refrozen presentation awful but iuce cream delicious basically freeze little bowl thats dont scoop garnish anything tastes great though refreezing alcohol creates flaky ice crystals ice cream pleasing texture bill 50 2 sodas mussels cup soup 2 entrees 2 desserts not bad n ni think id willing give another try but definitely experienced better italian food comparable prices vegas
 
-YOUR INPUT REQUIRED: Error type
+**Error type:** Near-threshold / mixed 2-star style writeup
 
-YOUR INPUT REQUIRED: Observation
+**Observation:** Opens with "2 5 stars", praises service and bread, then criticizes atmosphere and salty soup. Label negative; model barely positive. Classic mixed review at the knife edge.
 
-YOUR INPUT REQUIRED: One testable fix
+**One testable fix:** If a leading star rating token is present ("2 5"), clamp or bias the prior toward that rating and re-evaluate near-threshold errors.
 
 ## Case 15: near_threshold
 
@@ -379,11 +379,11 @@ Processed text:
 
     came mom paint pieces great experience painted food water dog bowl puppy employees nice enough let bring puppy could put paw prints bowl didnt end working bc dog excited would definitely return create another project
 
-YOUR INPUT REQUIRED: Error type
+**Error type:** Near-threshold / short positive with mild hedge
 
-YOUR INPUT REQUIRED: Observation
+**Observation:** Paint-your-own pottery visit is positive; "didnt end working" about the dog paw print is a small snag. Model tips negative by 0.001.
 
-YOUR INPUT REQUIRED: One testable fix
+**One testable fix:** On short slice only, require stronger negative evidence than a single negated clause before predicting 0; tune that rule on validation short errors.
 
 ## Case 16: slice_specific
 
@@ -404,11 +404,11 @@ Processed text:
 
     says deliver wrong wrong not checked like applebees thought delivery something new pittsburgh area dont know something yelp something someone checked but not cool
 
-YOUR INPUT REQUIRED: Error type
+**Error type:** Metadata / platform complaint about a delivery checkbox
 
-YOUR INPUT REQUIRED: Observation
+**Observation:** Anger is aimed at Yelp’s "delivers" flag, not clearly at Applebee’s food. Tokens "wrong wrong not" drive a negative prediction while the writer still "like[s] applebees."
 
-YOUR INPUT REQUIRED: One testable fix
+**One testable fix:** Tag reviews whose complaint targets the listing/platform; hold them out of training or add a "meta-complaint" class in an error analysis pass.
 
 ## Case 17: slice_specific
 
@@ -429,11 +429,11 @@ Processed text:
 
     eaten restaurant several times enjoy food last night brought friends another couple one birthdays afternoon called spoke hostess tell would like happy birthday written plate whatever dessert ordered arrived restaurant ran ahead mentioned hostess different one spoke phone fact order dessert no acknowledgement birthday either candle writing plate slow evening no excuse busy but messages not relayed waiter good way not fault disappointing wanted finish evening surprise called manager morning apologized but absolutely no offer gift card dessert could make friend not good business
 
-YOUR INPUT REQUIRED: Error type
+**Error type:** Positive history overshadowed by one disappointing visit
 
-YOUR INPUT REQUIRED: Observation
+**Observation:** They "enjoy the food" and praise the waiter, but birthday dessert mishap and no gift card dominate. Label positive overall; model focuses on "disappointing" / "not good business."
 
-YOUR INPUT REQUIRED: One testable fix
+**One testable fix:** Split multi-visit reviews on cues like "several times" vs "last night"; train to weight the overall relationship sentence if present.
 
 ## Case 18: slice_specific
 
@@ -454,11 +454,11 @@ Processed text:
 
     flight arrived vegas earlier excepted expected room not ready arrived hotel may 19th front desk girl offered us room ready 28th floor wasnt facing bellagio fountain booked corner view suite requested room high floor bellagio fountain view first made reservation 56 floors hotel said room 30th floor view bellagio fountain but wasnt ready continued look rooms said room 50th room bellagio fountain view but wasnt ready yet either agreed wait room cleaned said would couple hours would ready waited couple hours walking around area calling check see room ready yet transferred housekeeping said wasnt ready yet would call back eating walking around couple hours without hearing back anyone decided go back hotel told room ready would nice called told would n nupon inspecting room found dirty fork knife dishwasher well trash trash underneath kitchen sink housekeeping called see utensils delivered requested upon check delivered told trash dirty utensils said would send someone take care no one ever showed trash dirty utensils left next day housekeeping came clean room room great view fountain strip mountains n non evening thursday may 20th called concierge attempt change reservation time dinner jean georges steakhouse aria held phone 30 mins waiting someone answer but no one ever hung decided call restaurant directly n nthe hotel nice hotel unlike reviewers feel within short walk bellagio aria cosmopolitan strip would suggest going 24hr cvs short walk located block south citycenter strip grab snacks drinks since market inside hotel limited choices closes certain time n nthe clark county fire station located adjacent property tend stay busy one late nights early morning hours seemed respond several calls span 4 5 hours windows not sound proof hear sirens may interrupt sleep youre light sleeper n nthe entire property nice would stay especially non smoking non gaming hotel
 
-YOUR INPUT REQUIRED: Error type
+**Error type:** Long truncated review: complaints early, praise late
 
-YOUR INPUT REQUIRED: Observation
+**Observation:** Dirty utensils and ignored callbacks appear early; "would stay there again" and fountain view come later. At max length 207 the model may never see the closing endorsement in full.
 
-YOUR INPUT REQUIRED: One testable fix
+**One testable fix:** Re-encode with max length 400 (or head+tail 100+107 tokens) and measure long-slice F1 and this example’s probability.
 
 ## Case 19: slice_specific
 
@@ -479,11 +479,11 @@ Processed text:
 
     pros n right middle strip n access monorail within hotel n fab deluxe clean beds soft n cheapest price middle strip n rooms well kept n margarita ville n ncons n cellphone reception rooms no signal rooms casino ok n no free wifi suite rooms wifi bad slow n buffet weak not much avoid n no good channels 1 kids channel n room service ends 9pm way early starts 6am n nmy review based fab deluxe room n ni stayed saturday sunday got around 12pm checked early 20 fee ordered extra bed 60 given room key went room hallway seems but rundown cieling low anyone 6 may duck bit room well kept clean exactly like online picture tv small flat screen no good channels 1 kids channel mostly theyre advertisements bathroom ok cookie cutter bathroom design rest hotels beds soft comfortable pillows fluffy n nroom service stops 9pm starts 6am dissapointing compared 24 hour room service hooters n ncellphone reception terrible rooms using verizon wireless phone could barely keep 4g 1 bar room sometimes signal drops together inside casino fine n nwifi 12 one device connection slow logging pain pass wifi n ntheir buffet terrible brunch selection insulting buffets 12 selections food sausage hashbrowns bacon eggs benedict but 25 selections salad toppings choclate fountain but not worth 20 admission make pass buffet n nthe casino rest n nthe flamingo monorail station hall easy access strip highly recommend getting pass heading home save walking especially youre edges strip n ndid not experience pool winter not experience flamingo garden walkway n noverall n n4 5 n ngreat location price monorail stop location rooms but terrible cellphone signal wifi room service
 
-YOUR INPUT REQUIRED: Error type
+**Error type:** Pros/cons list where cons section is denser
 
-YOUR INPUT REQUIRED: Observation
+**Observation:** Structured Pros/Cons. Cons (wifi, buffet, room service, signal) are longer and more emotional than Pros. Gold is still positive overall (4/5), but GRU reads the cons block and goes to ~0.0008 positive probability.
 
-YOUR INPUT REQUIRED: One testable fix
+**One testable fix:** Parse Pros/Cons headings when present and average segment logits with a prior that overall stars win; test on reviews containing both "pros" and "cons" tokens.
 
 ## Case 20: slice_specific
 
@@ -504,8 +504,8 @@ Processed text:
 
     appreciation actual review nas former long time az state employee health care extremely frustrating retirement medicare supplement not improvement carrier different plan find provider conservatively speaking close impossible due extremely low provider payments fact provider listings year year sad joke call ten places directory not contracted wrong address not provider years heart specialist listed water specialist needed cataract surgery spent dozens hours phone ncarrier promises call back never nvery nice courteous caring completely inept npeople month gave carrier spoke number offices unrelated cataracts nas usual hatfield family medicine concentra nwas nice caring left office nhaving appointment barnet dulaney perkins nwho highly competent but one possibly two firms accept carriers measly payment nhatfield continued work no need first place mailed info another doctor believe accept plan nin days finally seen three months wasted time think generosity part barnet dulaney perkins na review follow
 
-YOUR INPUT REQUIRED: Error type
+**Error type:** Appreciation coda after a long rant about a different entity
 
-YOUR INPUT REQUIRED: Observation
+**Observation:** Most of the text rants about an insurance carrier; only the ending thanks Hatfield Family Medicine. Truncation and rant length make the provider praise easy to miss.
 
-YOUR INPUT REQUIRED: One testable fix
+**One testable fix:** Prefer the last named business mention when multiple orgs appear; verify on reviews with more than one proper-name span.

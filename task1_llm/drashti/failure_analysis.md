@@ -26,7 +26,7 @@ Bob was a big pupil. His teacher said he was so happy. He was so excited to go o
 - Within-sample repeated 4-gram rate: 0.6878980891719745
 - Observable candidate category: repetition
 
-YOUR INPUT REQUIRED: Explain in your own words what failed in this generated text and why you classify it this way.
+The model starts fine (“he was so happy… excited to go on an adventure”) and then gets stuck. The same sentence fragment is copied almost verbatim for the rest of the 160 characters. That is classic greedy collapse: once “He was so excited to go on an adventure” becomes high probability, every next step prefers to keep that loop. The repeated 4-gram rate of 0.69 is not an abstract metric here—you can see the loop by eye. I classify this as repetition, not just “boring writing,” because the failure mode is local n-gram lock-in rather than a wrong plot choice.
 
 ## Candidate 2
 
@@ -51,7 +51,7 @@ Sara and Ben went to the zoo with their mom. They saw a big box of cars and truc
 - Observable candidate category: loss of coherence
 - Visible text: the continuation leaves the zoo and describes a box of cars and trucks, then buying food.
 
-YOUR INPUT REQUIRED: Explain in your own words what failed in this generated text and why you classify it this way.
+The prompt sets a zoo scene, but the continuation never stays there. Mom appears (reasonable), then “a big box of cars and trucks,” then buying food—none of which follows from “went to the zoo.” This is loss of coherence: the model is stitching together TinyStories-ish templates (box of toys, buying food, excitement) without holding the topic. Character-level next-token loss can still be low while the story jumps, because each short phrase is locally plausible.
 
 ## Candidate 3
 
@@ -77,4 +77,4 @@ Lily and Ben are playing in their room. They like to run and jump and slide. The
 - Within-sample repeated 4-gram rate: 0.3057324840764331
 - Observable candidate category: repetition
 
-YOUR INPUT REQUIRED: Explain in your own words what failed in this generated text and why you classify it this way.
+After a normal opening, the text hits “They want to see the box and the box and the box and the box was very happy.” That is the same repetition failure as Candidate 1, just with a different phrase. The model treats “the box and” as a safe continuation and rolls it until the character budget ends. I keep the category as repetition; the grammar break at the end (“the box was very happy”) is a side effect of that loop, not the main story.
