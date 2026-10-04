@@ -1,0 +1,70 @@
+# Local environments and secrets
+.env
+.env.*
+.venv/
+venv/
+env/
+*.pem
+*.key
+credentials.json
+kaggle.json
+token.json
+
+# Python caches and tooling
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+
+# Downloaded datasets. Directory placeholders stay tracked.
+task1_llm/data/**
+!task1_llm/data/.gitkeep
+task2_sentiment/data/**
+!task2_sentiment/data/.gitkeep
+task3_gan/data/monet_jpg/**
+!task3_gan/data/monet_jpg/.gitkeep
+task3_gan/data/photo_jpg/**
+!task3_gan/data/photo_jpg/.gitkeep
+task3_gan/data/*.zip
+task3_gan/data/class_download/
+
+# Processed data. Directory placeholders stay tracked.
+**/data_processed/**
+!**/data_processed/.gitkeep
+
+# Model weights. Checkpoint metadata JSON may be committed later.
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.bin
+
+# Generated images
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.bmp
+*.tif
+*.tiff
+
+# Array dumps
+*.npy
+*.npz
+
+# Local experiment trackers
+wandb/
+mlruns/
+.cache/
+
+# Local GPU transfer copy. Training code lives under task3_gan/drashti/.
+DATA266_Lab1_GPU/
+DATA266_Lab1_GPU.zip
