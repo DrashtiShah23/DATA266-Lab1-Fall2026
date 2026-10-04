@@ -1,0 +1,11 @@
+{
+  "checkpoint_file": "task2_sentiment/drashti/checkpoints/task2_drashti_gru_epoch3_20260928T201357720891Z_18f97cc3.pt",
+  "config_file": "configs/task2_drashti_gru.json",
+  "created_at": "2026-09-28T20:13:57.794414+00:00",
+  "epoch": 3,
+  "experiment_name": "task2_drashti_gru",
+  "git_commit": null,
+  "member": "drashti",
+  "seed": 266,
+  "task": "task2"
+}

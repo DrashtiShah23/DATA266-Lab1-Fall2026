@@ -1,0 +1,11 @@
+{
+  "checkpoint_file": "task2_sentiment/drashti/checkpoints/task2_drashti_baseline_epoch2_20260928T193624583319Z_c94637b8.pt",
+  "config_file": "configs/task2_drashti_baseline.json",
+  "created_at": "2026-09-28T19:36:24.629773+00:00",
+  "epoch": 2,
+  "experiment_name": "task2_drashti_baseline",
+  "git_commit": null,
+  "member": "drashti",
+  "seed": 266,
+  "task": "task2"
+}
