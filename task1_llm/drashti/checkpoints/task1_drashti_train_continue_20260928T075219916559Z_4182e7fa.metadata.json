@@ -1,0 +1,11 @@
+{
+  "checkpoint_file": "task1_llm/drashti/checkpoints/task1_drashti_train_continue_20260928T075219828443Z_epoch20_step31260.pt",
+  "config_file": "configs/task1_drashti_train_continue.json",
+  "created_at": "2026-09-28T07:52:19.916337+00:00",
+  "epoch": 20,
+  "experiment_name": "task1_drashti_train_continue",
+  "git_commit": null,
+  "member": "drashti",
+  "seed": 266,
+  "task": "task1"
+}
