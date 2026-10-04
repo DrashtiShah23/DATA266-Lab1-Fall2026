@@ -1,0 +1,21 @@
+{
+  "accuracy": {
+    "lower": 0.9518684210526316,
+    "upper": 0.956053947368421
+  },
+  "f1_macro": {
+    "lower": 0.9518681111268923,
+    "upper": 0.9560468929353064
+  },
+  "generator": "numpy PCG64",
+  "lower_percentile": 2.5,
+  "mcc": {
+    "lower": 0.9037508204672935,
+    "upper": 0.9121099552924634
+  },
+  "method": "percentile",
+  "resamples": 1000,
+  "sample_size": 38000,
+  "seed": 266,
+  "upper_percentile": 97.5
+}

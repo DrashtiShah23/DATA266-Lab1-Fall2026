@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 640 480">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="60" y="24" font-size="16" fill="#222222">experimental_1 reliability</text>
+<line x1="60" y1="40" x2="60" y2="420" stroke="#888888"/>
+<line x1="60" y1="420" x2="440" y2="420" stroke="#888888"/>
+<line x1="60" y1="420" x2="440" y2="40" stroke="#bbbbbb" stroke-dasharray="4 4"/>
+<text x="250" y="450" font-size="12" text-anchor="middle" fill="#333333">Mean confidence of the predicted class</text>
+<text x="18" y="230" font-size="12" fill="#333333" transform="rotate(-90 18 230)">Empirical accuracy</text>
+<circle cx="255.85" cy="213.11" r="5.22" fill="#1f4e79" fill-opacity="0.75"/>
+<circle cx="275.03" cy="195.98" r="5.54" fill="#1f4e79" fill-opacity="0.75"/>
+<circle cx="301.09" cy="174.96" r="5.54" fill="#1f4e79" fill-opacity="0.75"/>
+<circle cx="326.10" cy="141.86" r="5.64" fill="#1f4e79" fill-opacity="0.75"/>
+<circle cx="351.98" cy="130.64" r="5.81" fill="#1f4e79" fill-opacity="0.75"/>
+<circle cx="377.90" cy="98.99" r="6.13" fill="#1f4e79" fill-opacity="0.75"/>
+<circle cx="403.68" cy="77.07" r="6.84" fill="#1f4e79" fill-opacity="0.75"/>
+<circle cx="436.53" cy="44.54" r="14.00" fill="#1f4e79" fill-opacity="0.75"/>
+</svg>

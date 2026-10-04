@@ -1,0 +1,15 @@
+{
+  "bootstrap_resamples": 1000,
+  "bootstrap_seed": 266,
+  "checkpoint_selection": "unchanged from Phase 6 validation macro F1",
+  "decision_threshold": 0.5,
+  "ece_bins": 15,
+  "ece_confidence": "probability of the predicted class",
+  "negative_label": 0,
+  "positive_label": 1,
+  "positive_probability_column": "positive_probability",
+  "pr_definition": "step-function average precision, not trapezoidal integration",
+  "review_model": "experimental_2",
+  "review_model_rule": "highest official-test macro F1; earlier name wins a tie",
+  "threshold_rule": "predict positive when positive_probability >= 0.5"
+}

@@ -1,0 +1,156 @@
+{
+  "bin_rows": [
+    {
+      "bin": 0,
+      "count": 0,
+      "ece_contribution": 0.0,
+      "empirical_accuracy": 0.0,
+      "lower": 0.0,
+      "mean_confidence": 0.0,
+      "upper": 0.06666666666666667,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 1,
+      "count": 0,
+      "ece_contribution": 0.0,
+      "empirical_accuracy": 0.0,
+      "lower": 0.06666666666666667,
+      "mean_confidence": 0.0,
+      "upper": 0.13333333333333333,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 2,
+      "count": 0,
+      "ece_contribution": 0.0,
+      "empirical_accuracy": 0.0,
+      "lower": 0.13333333333333333,
+      "mean_confidence": 0.0,
+      "upper": 0.2,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 3,
+      "count": 0,
+      "ece_contribution": 0.0,
+      "empirical_accuracy": 0.0,
+      "lower": 0.2,
+      "mean_confidence": 0.0,
+      "upper": 0.26666666666666666,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 4,
+      "count": 0,
+      "ece_contribution": 0.0,
+      "empirical_accuracy": 0.0,
+      "lower": 0.26666666666666666,
+      "mean_confidence": 0.0,
+      "upper": 0.3333333333333333,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 5,
+      "count": 0,
+      "ece_contribution": 0.0,
+      "empirical_accuracy": 0.0,
+      "lower": 0.3333333333333333,
+      "mean_confidence": 0.0,
+      "upper": 0.4,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 6,
+      "count": 0,
+      "ece_contribution": 0.0,
+      "empirical_accuracy": 0.0,
+      "lower": 0.4,
+      "mean_confidence": 0.0,
+      "upper": 0.4666666666666667,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 7,
+      "count": 211,
+      "ece_contribution": 0.0002622436636842106,
+      "empirical_accuracy": 0.46919431279620855,
+      "lower": 0.4666666666666667,
+      "mean_confidence": 0.516423029478673,
+      "upper": 0.5333333333333333,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 8,
+      "count": 424,
+      "ece_contribution": 6.706829315789474e-05,
+      "empirical_accuracy": 0.5731132075471698,
+      "lower": 0.5333333333333333,
+      "mean_confidence": 0.5671023699528301,
+      "upper": 0.6,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 9,
+      "count": 494,
+      "ece_contribution": 0.00034767194499999907,
+      "empirical_accuracy": 0.6072874493927125,
+      "lower": 0.6,
+      "mean_confidence": 0.6340314451619432,
+      "upper": 0.6666666666666666,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 10,
+      "count": 506,
+      "ece_contribution": 0.0007692388578947365,
+      "empirical_accuracy": 0.6442687747035574,
+      "lower": 0.6666666666666666,
+      "mean_confidence": 0.7020377007905139,
+      "upper": 0.7333333333333333,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 11,
+      "count": 689,
+      "ece_contribution": 0.001171492260000001,
+      "empirical_accuracy": 0.7024673439767779,
+      "lower": 0.7333333333333333,
+      "mean_confidence": 0.7670779475761974,
+      "upper": 0.8,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 12,
+      "count": 892,
+      "ece_contribution": 0.0010253664489473702,
+      "empirical_accuracy": 0.7914798206278026,
+      "lower": 0.8,
+      "mean_confidence": 0.8351613509641256,
+      "upper": 0.8666666666666667,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 13,
+      "count": 1591,
+      "ece_contribution": 0.0019485239913157883,
+      "empirical_accuracy": 0.8573224387177876,
+      "lower": 0.8666666666666667,
+      "mean_confidence": 0.9038616666687618,
+      "upper": 0.9333333333333333,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 14,
+      "count": 33193,
+      "ece_contribution": 0.0069338560584210045,
+      "empirical_accuracy": 0.9859910222034767,
+      "lower": 0.9333333333333333,
+      "mean_confidence": 0.9939290371530142,
+      "upper": 1.0,
+      "upper_inclusive": true
+    }
+  ],
+  "bins": 15,
+  "expected_calibration_error": 0.012525461518421006
+}

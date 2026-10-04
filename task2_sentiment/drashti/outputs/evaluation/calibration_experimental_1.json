@@ -1,0 +1,156 @@
+{
+  "bin_rows": [
+    {
+      "bin": 0,
+      "count": 0,
+      "ece_contribution": 0.0,
+      "empirical_accuracy": 0.0,
+      "lower": 0.0,
+      "mean_confidence": 0.0,
+      "upper": 0.06666666666666667,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 1,
+      "count": 0,
+      "ece_contribution": 0.0,
+      "empirical_accuracy": 0.0,
+      "lower": 0.06666666666666667,
+      "mean_confidence": 0.0,
+      "upper": 0.13333333333333333,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 2,
+      "count": 0,
+      "ece_contribution": 0.0,
+      "empirical_accuracy": 0.0,
+      "lower": 0.13333333333333333,
+      "mean_confidence": 0.0,
+      "upper": 0.2,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 3,
+      "count": 0,
+      "ece_contribution": 0.0,
+      "empirical_accuracy": 0.0,
+      "lower": 0.2,
+      "mean_confidence": 0.0,
+      "upper": 0.26666666666666666,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 4,
+      "count": 0,
+      "ece_contribution": 0.0,
+      "empirical_accuracy": 0.0,
+      "lower": 0.26666666666666666,
+      "mean_confidence": 0.0,
+      "upper": 0.3333333333333333,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 5,
+      "count": 0,
+      "ece_contribution": 0.0,
+      "empirical_accuracy": 0.0,
+      "lower": 0.3333333333333333,
+      "mean_confidence": 0.0,
+      "upper": 0.4,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 6,
+      "count": 0,
+      "ece_contribution": 0.0,
+      "empirical_accuracy": 0.0,
+      "lower": 0.4,
+      "mean_confidence": 0.0,
+      "upper": 0.4666666666666667,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 7,
+      "count": 450,
+      "ece_contribution": 0.0003439516692105257,
+      "empirical_accuracy": 0.5444444444444444,
+      "lower": 0.4666666666666667,
+      "mean_confidence": 0.5153996368222222,
+      "upper": 0.5333333333333333,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 8,
+      "count": 726,
+      "ece_contribution": 0.000451983567894738,
+      "empirical_accuracy": 0.5895316804407713,
+      "lower": 0.5333333333333333,
+      "mean_confidence": 0.5658741383195591,
+      "upper": 0.6,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 9,
+      "count": 718,
+      "ece_contribution": 0.00019648039526315943,
+      "empirical_accuracy": 0.6448467966573816,
+      "lower": 0.6,
+      "mean_confidence": 0.6344481127855153,
+      "upper": 0.6666666666666666,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 10,
+      "count": 817,
+      "ece_contribution": 0.0006812985905263194,
+      "empirical_accuracy": 0.7319461444308446,
+      "lower": 0.6666666666666666,
+      "mean_confidence": 0.7002578378947367,
+      "upper": 0.7333333333333333,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 11,
+      "count": 1002,
+      "ece_contribution": 0.00018151176052631315,
+      "empirical_accuracy": 0.7614770459081837,
+      "lower": 0.7333333333333333,
+      "mean_confidence": 0.7683607254491017,
+      "upper": 0.8,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 12,
+      "count": 1385,
+      "ece_contribution": 0.00029841789026315956,
+      "empirical_accuracy": 0.8447653429602888,
+      "lower": 0.8,
+      "mean_confidence": 0.8365777040938628,
+      "upper": 0.8666666666666667,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 13,
+      "count": 2460,
+      "ece_contribution": 0.0001282518584210479,
+      "empirical_accuracy": 0.9024390243902439,
+      "lower": 0.8666666666666667,
+      "mean_confidence": 0.9044201506585365,
+      "upper": 0.9333333333333333,
+      "upper_inclusive": false
+    },
+    {
+      "bin": 14,
+      "count": 30442,
+      "ece_contribution": 0.0022537423539473332,
+      "empirical_accuracy": 0.9880428355561396,
+      "lower": 0.9333333333333333,
+      "mean_confidence": 0.9908561267147362,
+      "upper": 1.0,
+      "upper_inclusive": true
+    }
+  ],
+  "bins": 15,
+  "expected_calibration_error": 0.004535638086052597
+}

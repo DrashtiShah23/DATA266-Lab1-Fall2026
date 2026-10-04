@@ -1,0 +1,22 @@
+{
+  "column_meaning": "predicted label",
+  "false_negative": 877,
+  "false_positive": 1158,
+  "label_order": [
+    "negative_0",
+    "positive_1"
+  ],
+  "matrix": [
+    [
+      17842,
+      1158
+    ],
+    [
+      877,
+      18123
+    ]
+  ],
+  "row_meaning": "true label",
+  "true_negative": 17842,
+  "true_positive": 18123
+}

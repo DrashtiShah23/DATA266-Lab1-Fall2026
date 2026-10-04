@@ -1,0 +1,91 @@
+{
+  "benchmark": {
+    "rows": 1000,
+    "rows_per_second": 29978.11568066309,
+    "seconds": 0.03335766699456144
+  },
+  "embedding_policy": "EMBEDDINGS WILL BE LEARNED FROM SCRATCH DURING MODEL TRAINING.",
+  "negation_tokens_preserved": [
+    "arent",
+    "but",
+    "cannot",
+    "cant",
+    "couldnt",
+    "didnt",
+    "doesnt",
+    "dont",
+    "hadnt",
+    "hasnt",
+    "havent",
+    "isnt",
+    "mustnt",
+    "neither",
+    "never",
+    "no",
+    "nobody",
+    "none",
+    "nor",
+    "not",
+    "nothing",
+    "nowhere",
+    "shouldnt",
+    "wasnt",
+    "werent",
+    "without",
+    "wont",
+    "wouldnt"
+  ],
+  "preprocessing_failures": 0,
+  "sequence_length": {
+    "basis": "development-training preprocessed token counts",
+    "development": {
+      "maximum_length": 207,
+      "model_ready_rows": 503972,
+      "padded_percentage": 0.9499079313930139,
+      "padded_rows": 478727,
+      "percentage_fitting_without_truncation": 0.9505111395077505,
+      "rows_fitting_without_truncation": 479031,
+      "truncated_percentage": 0.04948886049224957,
+      "truncated_rows": 24941
+    },
+    "percentile": 95,
+    "rule": "nearest-rank 95th percentile of development-training preprocessed token counts, with a floor of 1",
+    "selected": 207,
+    "test": {
+      "maximum_length": 207,
+      "model_ready_rows": 38000,
+      "padded_percentage": 0.9511578947368421,
+      "padded_rows": 36144,
+      "percentage_fitting_without_truncation": 0.9516842105263158,
+      "rows_fitting_without_truncation": 36164,
+      "truncated_percentage": 0.04831578947368421,
+      "truncated_rows": 1836
+    },
+    "validation": {
+      "maximum_length": 207,
+      "model_ready_rows": 55999,
+      "padded_percentage": 0.9502133966677977,
+      "padded_rows": 53211,
+      "percentage_fitting_without_truncation": 0.9506776906730477,
+      "rows_fitting_without_truncation": 53237,
+      "truncated_percentage": 0.049322309326952266,
+      "truncated_rows": 2762
+    }
+  },
+  "stemming_or_lemmatization": "not_used",
+  "stopword_count": 120,
+  "tokenization_failures": 0,
+  "vocabulary": {
+    "documents_fit": 504000,
+    "fit_on": "development portion of the official train split",
+    "maximum_size": 30000,
+    "minimum_frequency": 5,
+    "reserved_tokens": [
+      "<pad>",
+      "<unk>"
+    ],
+    "size": 30002,
+    "test_rows_used_for_fitting": 0,
+    "training_only": true
+  }
+}

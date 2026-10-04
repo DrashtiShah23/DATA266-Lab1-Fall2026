@@ -1,0 +1,41 @@
+{
+  "aligned": true,
+  "first_example_id": "test-0",
+  "last_example_id": "test-37999",
+  "models": {
+    "baseline": {
+      "checkpoint": "task2_sentiment/drashti/checkpoints/task2_drashti_baseline_epoch2_20260928T193624583319Z_c94637b8.pt",
+      "rows": 38000,
+      "slice_counts": {
+        "contains_negation": 30968,
+        "long": 9338,
+        "medium": 18751,
+        "short": 9911
+      },
+      "unique_ids": 38000
+    },
+    "experimental_1": {
+      "checkpoint": "task2_sentiment/drashti/checkpoints/task2_drashti_cnn_epoch2_20260928T193909317882Z_7ac08cc1.pt",
+      "rows": 38000,
+      "slice_counts": {
+        "contains_negation": 30968,
+        "long": 9338,
+        "medium": 18751,
+        "short": 9911
+      },
+      "unique_ids": 38000
+    },
+    "experimental_2": {
+      "checkpoint": "task2_sentiment/drashti/checkpoints/task2_drashti_gru_epoch3_20260928T201357720891Z_18f97cc3.pt",
+      "rows": 38000,
+      "slice_counts": {
+        "contains_negation": 30968,
+        "long": 9338,
+        "medium": 18751,
+        "short": 9911
+      },
+      "unique_ids": 38000
+    }
+  },
+  "same_ground_truth": true
+}

@@ -1,0 +1,25 @@
+{
+  "development": {
+    "contains_negation": 412165,
+    "empty_after_preprocessing": 28,
+    "long": 124024,
+    "medium": 249089,
+    "short": 130859
+  },
+  "high_cutoff": 97,
+  "low_cutoff": 29,
+  "rule": "length tertiles use the 25th and 75th percentiles of development-training preprocessed token counts; a negation slice overlaps those tertiles",
+  "test": {
+    "contains_negation": 30968,
+    "long": 9338,
+    "medium": 18751,
+    "short": 9911
+  },
+  "validation": {
+    "contains_negation": 45959,
+    "empty_after_preprocessing": 1,
+    "long": 13814,
+    "medium": 27731,
+    "short": 14454
+  }
+}

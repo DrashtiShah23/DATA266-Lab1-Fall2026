@@ -1,0 +1,25 @@
+{
+  "label_meaning": {
+    "0": "negative",
+    "1": "positive"
+  },
+  "label_source": "The dataset card says negative polarity is class 1 and positive polarity is class 2. The loaded ClassLabel names are ['1', '2'], so integer 0 is class 1 (negative) and integer 1 is class 2 (positive).",
+  "test": {
+    "0": 19000,
+    "1": 19000
+  },
+  "test_imbalance_ratio": 1.0,
+  "test_percentages": {
+    "0": 0.5,
+    "1": 0.5
+  },
+  "train": {
+    "0": 280000,
+    "1": 280000
+  },
+  "train_imbalance_ratio": 1.0,
+  "train_percentages": {
+    "0": 0.5,
+    "1": 0.5
+  }
+}

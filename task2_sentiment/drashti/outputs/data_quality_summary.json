@@ -1,0 +1,56 @@
+{
+  "test": {
+    "class_counts": {
+      "0": 19000,
+      "1": 19000
+    },
+    "class_imbalance_ratio_majority_over_minority": 1.0,
+    "class_percentages": {
+      "0": 0.5,
+      "1": 0.5
+    },
+    "duplicate_text": {
+      "extra_copies": 0,
+      "keys_with_more_than_one_record": 0,
+      "records_in_repeated_groups": 0,
+      "unique_keys": 38000
+    },
+    "duplicate_text_and_label": {
+      "extra_copies": 0,
+      "keys_with_more_than_one_record": 0,
+      "records_in_repeated_groups": 0,
+      "unique_keys": 38000
+    },
+    "issue_counts": {},
+    "malformed_records": 0,
+    "records": 38000,
+    "rows_deleted": 0
+  },
+  "train": {
+    "class_counts": {
+      "0": 280000,
+      "1": 280000
+    },
+    "class_imbalance_ratio_majority_over_minority": 1.0,
+    "class_percentages": {
+      "0": 0.5,
+      "1": 0.5
+    },
+    "duplicate_text": {
+      "extra_copies": 0,
+      "keys_with_more_than_one_record": 0,
+      "records_in_repeated_groups": 0,
+      "unique_keys": 560000
+    },
+    "duplicate_text_and_label": {
+      "extra_copies": 0,
+      "keys_with_more_than_one_record": 0,
+      "records_in_repeated_groups": 0,
+      "unique_keys": 560000
+    },
+    "issue_counts": {},
+    "malformed_records": 0,
+    "records": 560000,
+    "rows_deleted": 0
+  }
+}

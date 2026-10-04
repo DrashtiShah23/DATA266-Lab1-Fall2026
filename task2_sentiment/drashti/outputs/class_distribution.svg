@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="70" y="24" font-size="16" fill="#222222">Yelp Polarity class counts</text>
+<text x="70" y="524" font-size="12" fill="#444444">class. counts from loaded records</text>
+<line x1="70" y1="40" x2="70" y2="430" stroke="#888888"/>
+<line x1="70" y1="430" x2="940" y2="430" stroke="#888888"/>
+<text x="62" y="44" font-size="12" text-anchor="end" fill="#444444">280000</text>
+<rect x="71.00" y="40.00" width="215.50" height="390.00" fill="#1f4e79"/><rect x="288.50" y="40.00" width="215.50" height="390.00" fill="#1f4e79"/><rect x="506.00" y="403.54" width="215.50" height="26.46" fill="#1f4e79"/><rect x="723.50" y="403.54" width="215.50" height="26.46" fill="#1f4e79"/>
+<text x="178.75" y="470" font-size="11" text-anchor="end" transform="rotate(-40 178.75 470)">train negative (0)</text><text x="396.25" y="470" font-size="11" text-anchor="end" transform="rotate(-40 396.25 470)">train positive (1)</text><text x="613.75" y="470" font-size="11" text-anchor="end" transform="rotate(-40 613.75 470)">test negative (0)</text><text x="831.25" y="470" font-size="11" text-anchor="end" transform="rotate(-40 831.25 470)">test positive (1)</text>
+</svg>

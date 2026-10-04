@@ -1,0 +1,343 @@
+{
+  "absent_token_encodes_to_unknown": true,
+  "batch": {
+    "content_length_shape": [
+      32
+    ],
+    "example_ids": [
+      "train-0",
+      "train-1",
+      "train-2",
+      "train-4",
+      "train-5",
+      "train-6",
+      "train-7",
+      "train-8",
+      "train-9",
+      "train-10",
+      "train-11",
+      "train-12",
+      "train-13",
+      "train-14",
+      "train-15",
+      "train-16",
+      "train-17",
+      "train-18",
+      "train-19",
+      "train-20",
+      "train-21",
+      "train-22",
+      "train-25",
+      "train-26",
+      "train-27",
+      "train-28",
+      "train-29",
+      "train-30",
+      "train-32",
+      "train-33",
+      "train-34",
+      "train-35"
+    ],
+    "first_example_id": "train-0",
+    "input_ids_shape": [
+      32,
+      207
+    ],
+    "labels_shape": [
+      32
+    ],
+    "last_example_id": "train-35"
+  },
+  "benchmark": {
+    "rows": 1000,
+    "rows_per_second": 29978.11568066309,
+    "seconds": 0.03335766699456144
+  },
+  "cache_dir": "task2_sentiment/data/hf_cache",
+  "columns": {
+    "test": [
+      "text",
+      "label"
+    ],
+    "train": [
+      "text",
+      "label"
+    ]
+  },
+  "dataset_id": "yelp_polarity",
+  "dataset_revision": "bbf1c97a1f0cf005e5aded43839fd814654a1557",
+  "dataset_source": "https://huggingface.co/datasets/yelp_polarity",
+  "development_processed_token_lengths": {
+    "count": 504000,
+    "maximum": 787,
+    "mean": 74.06311706349206,
+    "median": 54,
+    "minimum": 0,
+    "percentile_25": 29,
+    "percentile_50": 54,
+    "percentile_75": 97,
+    "percentile_90": 157,
+    "percentile_95": 207,
+    "percentile_99": 336,
+    "population_standard_deviation": 67.81707248037098
+  },
+  "embedding_policy": "EMBEDDINGS WILL BE LEARNED FROM SCRATCH DURING MODEL TRAINING.",
+  "label_field": "label",
+  "label_meaning": {
+    "0": "negative",
+    "1": "positive"
+  },
+  "label_source": "The dataset card says negative polarity is class 1 and positive polarity is class 2. The loaded ClassLabel names are ['1', '2'], so integer 0 is class 1 (negative) and integer 1 is class 2 (positive).",
+  "negation_tokens_preserved": [
+    "arent",
+    "but",
+    "cannot",
+    "cant",
+    "couldnt",
+    "didnt",
+    "doesnt",
+    "dont",
+    "hadnt",
+    "hasnt",
+    "havent",
+    "isnt",
+    "mustnt",
+    "neither",
+    "never",
+    "no",
+    "nobody",
+    "none",
+    "nor",
+    "not",
+    "nothing",
+    "nowhere",
+    "shouldnt",
+    "wasnt",
+    "werent",
+    "without",
+    "wont",
+    "wouldnt"
+  ],
+  "preprocessing_failures": 0,
+  "pretrained_vectors_loaded": false,
+  "rows_deleted": 0,
+  "sequence_length": {
+    "basis": "development-training preprocessed token counts",
+    "development": {
+      "maximum_length": 207,
+      "model_ready_rows": 503972,
+      "padded_percentage": 0.9499079313930139,
+      "padded_rows": 478727,
+      "percentage_fitting_without_truncation": 0.9505111395077505,
+      "rows_fitting_without_truncation": 479031,
+      "truncated_percentage": 0.04948886049224957,
+      "truncated_rows": 24941
+    },
+    "percentile": 95,
+    "rule": "nearest-rank 95th percentile of development-training preprocessed token counts, with a floor of 1",
+    "selected": 207,
+    "test": {
+      "maximum_length": 207,
+      "model_ready_rows": 38000,
+      "padded_percentage": 0.9511578947368421,
+      "padded_rows": 36144,
+      "percentage_fitting_without_truncation": 0.9516842105263158,
+      "rows_fitting_without_truncation": 36164,
+      "truncated_percentage": 0.04831578947368421,
+      "truncated_rows": 1836
+    },
+    "validation": {
+      "maximum_length": 207,
+      "model_ready_rows": 55999,
+      "padded_percentage": 0.9502133966677977,
+      "padded_rows": 53211,
+      "percentage_fitting_without_truncation": 0.9506776906730477,
+      "rows_fitting_without_truncation": 53237,
+      "truncated_percentage": 0.049322309326952266,
+      "truncated_rows": 2762
+    }
+  },
+  "slices": {
+    "development": {
+      "contains_negation": 412165,
+      "empty_after_preprocessing": 28,
+      "long": 124024,
+      "medium": 249089,
+      "short": 130859
+    },
+    "high_cutoff": 97,
+    "low_cutoff": 29,
+    "rule": "length tertiles use the 25th and 75th percentiles of development-training preprocessed token counts; a negation slice overlaps those tertiles",
+    "test": {
+      "contains_negation": 30968,
+      "long": 9338,
+      "medium": 18751,
+      "short": 9911
+    },
+    "validation": {
+      "contains_negation": 45959,
+      "empty_after_preprocessing": 1,
+      "long": 13814,
+      "medium": 27731,
+      "short": 14454
+    }
+  },
+  "stemming_or_lemmatization": "not_used",
+  "stopword_count": 120,
+  "test_character_lengths": {
+    "count": 38000,
+    "maximum": 5107,
+    "mean": 723.8446578947369,
+    "median": 528,
+    "minimum": 4,
+    "percentile_25": 280,
+    "percentile_50": 528,
+    "percentile_75": 944,
+    "percentile_90": 1532,
+    "percentile_95": 2021,
+    "percentile_99": 3295,
+    "population_standard_deviation": 662.2975851258783
+  },
+  "test_only_vocabulary_types": 8055,
+  "test_quality": {
+    "class_counts": {
+      "0": 19000,
+      "1": 19000
+    },
+    "class_imbalance_ratio_majority_over_minority": 1.0,
+    "class_percentages": {
+      "0": 0.5,
+      "1": 0.5
+    },
+    "duplicate_text": {
+      "extra_copies": 0,
+      "keys_with_more_than_one_record": 0,
+      "records_in_repeated_groups": 0,
+      "unique_keys": 38000
+    },
+    "duplicate_text_and_label": {
+      "extra_copies": 0,
+      "keys_with_more_than_one_record": 0,
+      "records_in_repeated_groups": 0,
+      "unique_keys": 38000
+    },
+    "issue_counts": {},
+    "malformed_records": 0,
+    "records": 38000,
+    "rows_deleted": 0
+  },
+  "test_records": 38000,
+  "test_token_occurrences": 2804109,
+  "test_unknown_token_occurrences": 45266,
+  "test_word_lengths": {
+    "count": 38000,
+    "maximum": 1007,
+    "mean": 132.55863157894737,
+    "median": 97,
+    "minimum": 1,
+    "percentile_25": 51,
+    "percentile_50": 97,
+    "percentile_75": 173,
+    "percentile_90": 281,
+    "percentile_95": 367,
+    "percentile_99": 603,
+    "population_standard_deviation": 121.21501984499348
+  },
+  "text_field": "text",
+  "tokenization_failures": 0,
+  "train_character_lengths": {
+    "count": 560000,
+    "maximum": 5273,
+    "mean": 726.4979232142857,
+    "median": 528,
+    "minimum": 1,
+    "percentile_25": 279,
+    "percentile_50": 528,
+    "percentile_75": 947,
+    "percentile_90": 1537,
+    "percentile_95": 2032,
+    "percentile_99": 3333,
+    "population_standard_deviation": 669.8436745155723
+  },
+  "train_processed_token_lengths": {
+    "count": 560000,
+    "maximum": 787,
+    "mean": 74.09055535714286,
+    "median": 54,
+    "minimum": 0,
+    "percentile_25": 29,
+    "percentile_50": 54,
+    "percentile_75": 97,
+    "percentile_90": 157,
+    "percentile_95": 207,
+    "percentile_99": 337,
+    "population_standard_deviation": 67.85299449712605
+  },
+  "train_quality": {
+    "class_counts": {
+      "0": 280000,
+      "1": 280000
+    },
+    "class_imbalance_ratio_majority_over_minority": 1.0,
+    "class_percentages": {
+      "0": 0.5,
+      "1": 0.5
+    },
+    "duplicate_text": {
+      "extra_copies": 0,
+      "keys_with_more_than_one_record": 0,
+      "records_in_repeated_groups": 0,
+      "unique_keys": 560000
+    },
+    "duplicate_text_and_label": {
+      "extra_copies": 0,
+      "keys_with_more_than_one_record": 0,
+      "records_in_repeated_groups": 0,
+      "unique_keys": 560000
+    },
+    "issue_counts": {},
+    "malformed_records": 0,
+    "records": 560000,
+    "rows_deleted": 0
+  },
+  "train_records": 560000,
+  "train_word_lengths": {
+    "count": 560000,
+    "maximum": 1052,
+    "mean": 133.0288732142857,
+    "median": 97,
+    "minimum": 1,
+    "percentile_25": 51,
+    "percentile_50": 97,
+    "percentile_75": 174,
+    "percentile_90": 282,
+    "percentile_95": 372,
+    "percentile_99": 608,
+    "population_standard_deviation": 122.6115038455558
+  },
+  "validation_split": {
+    "covers_official_train": true,
+    "development_count": 504000,
+    "disjoint": true,
+    "fraction": 0.1,
+    "procedure": "Fisher-Yates shuffle of official train indices with random.Random(seed); validation is the first floor(fraction * train_count) indices; both lists are then sorted",
+    "reproducible": true,
+    "seed": 266,
+    "source": "official train split only",
+    "test_rows_used": 0,
+    "validation_count": 56000
+  },
+  "vocabulary": {
+    "documents_fit": 504000,
+    "fit_on": "development portion of the official train split",
+    "maximum_size": 30000,
+    "minimum_frequency": 5,
+    "reserved_tokens": [
+      "<pad>",
+      "<unk>"
+    ],
+    "size": 30002,
+    "test_rows_used_for_fitting": 0,
+    "training_only": true
+  }
+}

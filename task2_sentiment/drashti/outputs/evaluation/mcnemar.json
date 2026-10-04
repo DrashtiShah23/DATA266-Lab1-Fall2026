@@ -1,0 +1,26 @@
+[
+  {
+    "baseline_correct_experimental_wrong": 841,
+    "baseline_wrong_experimental_correct": 1196,
+    "both_correct": 34769,
+    "both_wrong": 1194,
+    "comparison": "baseline versus experimental_1",
+    "continuity_correction": "subtract 1 from the absolute discordant difference before squaring; floor the result at 0",
+    "discordant_count": 2037,
+    "method": "asymptotic chi-square with one degree of freedom",
+    "p_value": 4.382949060991548e-15,
+    "statistic": 61.519882179675996
+  },
+  {
+    "baseline_correct_experimental_wrong": 604,
+    "baseline_wrong_experimental_correct": 1244,
+    "both_correct": 35006,
+    "both_wrong": 1146,
+    "comparison": "baseline versus experimental_2",
+    "continuity_correction": "subtract 1 from the absolute discordant difference before squaring; floor the result at 0",
+    "discordant_count": 1848,
+    "method": "asymptotic chi-square with one degree of freedom",
+    "p_value": 5.604398183244309e-50,
+    "statistic": 220.95292207792207
+  }
+]
