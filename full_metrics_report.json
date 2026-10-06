@@ -1,0 +1,33 @@
+{
+  "parameter_count": 21204872,
+  "training_time_sec": 5528.096169710159,
+  "images_per_sec": 27.134115506508017,
+  "peak_memory_mb": 3038.5888671875,
+  "gradient_nan_count": 0,
+  "hardware": {
+    "python_version": "3.10.13",
+    "pytorch_version": "2.1.2",
+    "operating_system": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.31",
+    "cpu": "x86_64",
+    "device": "cuda",
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "gpu_vram_mb": 24563.5
+  },
+  "FID_B2A": 133.60904630807417,
+  "MiFID_B2A": 0.4488948010045906,
+  "FID_A2B": 146.40571141993132,
+  "MiFID_A2B": 0.45432665923578164,
+  "FID_mean": 140.00737886400276,
+  "MiFID_mean": 0.45161073012018615,
+  "KID_B2A": "COMPLETE_FROM_EVALUATION",
+  "KID_A2B": "COMPLETE_FROM_EVALUATION",
+  "generative_precision_recall": "COMPLETE_FROM_EVALUATION",
+  "LPIPS_B2A": "COMPLETE_FROM_EVALUATION",
+  "LPIPS_A2B": "COMPLETE_FROM_EVALUATION",
+  "content_cosine_B2A": "COMPLETE_FROM_EVALUATION",
+  "content_cosine_A2B": "COMPLETE_FROM_EVALUATION",
+  "human_audit_score": "COMPLETE_AFTER_30_SAMPLE_AUDIT",
+  "inter_rater_agreement": "COMPLETE_AFTER_RATER_2",
+  "kaggle_public_score": "COMPLETE_AFTER_SUBMISSION",
+  "kaggle_private_score": "COMPLETE_AFTER_RELEASE"
+}

@@ -1,0 +1,16 @@
+{
+  "parameter_count": 21204872,
+  "training_time_sec": 5528.096169710159,
+  "images_per_sec": 27.134115506508017,
+  "peak_memory_mb": 3038.5888671875,
+  "gradient_nan_count": 0,
+  "hardware": {
+    "python_version": "3.10.13",
+    "pytorch_version": "2.1.2",
+    "operating_system": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.31",
+    "cpu": "x86_64",
+    "device": "cuda",
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "gpu_vram_mb": 24563.5
+  }
+}
