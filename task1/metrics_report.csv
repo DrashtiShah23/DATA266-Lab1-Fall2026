@@ -1,0 +1,22 @@
+metric,value
+epoch,10
+train_loss,0.9809616947174072
+val_loss,0.9380561923980713
+train_acc,0.69166015625
+val_acc,0.704771728515625
+grad_norm,0.4890531142667098
+lr,3.2378540625321857e-10
+perplexity,2.5550101401569627
+bits_per_character,1.3533290168478809
+generalization_gap,-0.042905502319335986
+parameter_count,3236864
+training_time_sec,174.04149317741394
+nan_count,0
+generation_tokens_per_sec,489.70769892981986
+training_tokens_per_sec,735456.8020714446
+peak_memory_mb,795.40576171875
+distinct_1,0.09966777408637874
+distinct_2,0.44666666666666666
+distinct_3,0.6622073578595318
+repeated_4gram_rate,0.19798657718120805
+hardware,"{'python_version': '3.10.13', 'pytorch_version': '2.1.2', 'operating_system': 'Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.31', 'cpu': 'x86_64', 'device': 'cuda', 'gpu': 'NVIDIA GeForce RTX 4090', 'gpu_vram_mb': 24563.5}"
