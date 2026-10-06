@@ -1,0 +1,240 @@
+[
+  {
+    "model": "baseline",
+    "accuracy": 0.9316052631578947,
+    "precision_macro": 0.9316134996825466,
+    "precision_micro": 0.9316052631578947,
+    "precision_weighted": 0.9316134996825466,
+    "recall_macro": 0.9316052631578947,
+    "recall_micro": 0.9316052631578947,
+    "recall_weighted": 0.9316052631578947,
+    "f1_macro": 0.9316049368603947,
+    "f1_micro": 0.9316052631578947,
+    "f1_weighted": 0.9316049368603947,
+    "confusion_matrix": [
+      [
+        17659,
+        1341
+      ],
+      [
+        1258,
+        17742
+      ]
+    ],
+    "roc_auc": 0.9808290706371192,
+    "pr_auc": 0.9811134381243029,
+    "mcc": 0.8632187628011464,
+    "brier_score": 0.05113821319855893,
+    "ece": 0.44166503570919957,
+    "parameter_count": 27474178,
+    "training_time_sec": 35.45615029335022,
+    "peak_memory_mb": 593.0205078125,
+    "examples_per_sec": 42644.22356883947,
+    "hardware": {
+      "python_version": "3.10.13",
+      "pytorch_version": "2.1.2",
+      "operating_system": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.31",
+      "cpu": "x86_64",
+      "device": "cuda",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "gpu_vram_mb": 24563.5
+    },
+    "accuracy_ci95": [
+      0.9289559210526316,
+      0.9339085526315789
+    ],
+    "macro_f1_ci95": [
+      0.9289539265362812,
+      0.9339078368449601
+    ],
+    "mcc_ci95": [
+      0.857929173989824,
+      0.8678223347746835
+    ],
+    "slices": {
+      "short": {
+        "count": 2109,
+        "macro_f1": 0.9206258248035344,
+        "error_rate": 0.07349454717875771
+      },
+      "medium": {
+        "count": 13195,
+        "macro_f1": 0.9376516434025535,
+        "error_rate": 0.0612353164077302
+      },
+      "long": {
+        "count": 22696,
+        "macro_f1": 0.927198774812123,
+        "error_rate": 0.07208318646457526
+      }
+    },
+    "mcnemar_vs_cnn": {
+      "table": [
+        [
+          34060,
+          1341
+        ],
+        [
+          1359,
+          1240
+        ]
+      ],
+      "statistic": 0.10703703703703704,
+      "p_value": 0.7435429760630494
+    },
+    "mcnemar_vs_bigru": {
+      "table": [
+        [
+          34739,
+          662
+        ],
+        [
+          1340,
+          1259
+        ]
+      ],
+      "statistic": 228.93556443556443,
+      "p_value": 1.0173737382592229e-51
+    }
+  },
+  {
+    "model": "cnn",
+    "accuracy": 0.932078947368421,
+    "precision_macro": 0.9344072752998323,
+    "precision_micro": 0.932078947368421,
+    "precision_weighted": 0.9344072752998324,
+    "recall_macro": 0.932078947368421,
+    "recall_micro": 0.932078947368421,
+    "recall_weighted": 0.932078947368421,
+    "f1_macro": 0.9319878147610892,
+    "f1_micro": 0.932078947368421,
+    "f1_weighted": 0.9319878147610892,
+    "confusion_matrix": [
+      [
+        18405,
+        595
+      ],
+      [
+        1986,
+        17014
+      ]
+    ],
+    "roc_auc": 0.9854456468144044,
+    "pr_auc": 0.9856222454670165,
+    "mcc": 0.8664830944472843,
+    "brier_score": 0.053673311238623164,
+    "ece": 0.4793664567610984,
+    "parameter_count": 27655170,
+    "training_time_sec": 44.141623735427856,
+    "peak_memory_mb": 806.0849609375,
+    "examples_per_sec": 34253.38426747714,
+    "hardware": {
+      "python_version": "3.10.13",
+      "pytorch_version": "2.1.2",
+      "operating_system": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.31",
+      "cpu": "x86_64",
+      "device": "cuda",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "gpu_vram_mb": 24563.5
+    },
+    "accuracy_ci95": [
+      0.9291690789473684,
+      0.9349486842105263
+    ],
+    "macro_f1_ci95": [
+      0.9290633141002398,
+      0.9348580902525374
+    ],
+    "mcc_ci95": [
+      0.8607739900807763,
+      0.8720732123772343
+    ],
+    "slices": {
+      "short": {
+        "count": 2109,
+        "macro_f1": 0.9237063726341379,
+        "error_rate": 0.07112375533428165
+      },
+      "medium": {
+        "count": 13195,
+        "macro_f1": 0.939184371226897,
+        "error_rate": 0.06017430845017052
+      },
+      "long": {
+        "count": 22696,
+        "macro_f1": 0.9263197828243571,
+        "error_rate": 0.0721272470919986
+      }
+    }
+  },
+  {
+    "model": "bigru",
+    "accuracy": 0.9494473684210526,
+    "precision_macro": 0.9494526286353351,
+    "precision_micro": 0.9494473684210526,
+    "precision_weighted": 0.9494526286353352,
+    "recall_macro": 0.9494473684210527,
+    "recall_micro": 0.9494473684210526,
+    "recall_weighted": 0.9494473684210526,
+    "f1_macro": 0.949447220508661,
+    "f1_micro": 0.9494473684210526,
+    "f1_weighted": 0.9494472205086609,
+    "confusion_matrix": [
+      [
+        18072,
+        928
+      ],
+      [
+        993,
+        18007
+      ]
+    ],
+    "roc_auc": 0.9893055872576176,
+    "pr_auc": 0.9896411651852483,
+    "mcc": 0.8988999970409968,
+    "brier_score": 0.03834522787669107,
+    "ece": 0.46052639340094637,
+    "parameter_count": 27656066,
+    "training_time_sec": 49.01727271080017,
+    "peak_memory_mb": 1684.8486328125,
+    "examples_per_sec": 30846.269414472237,
+    "hardware": {
+      "python_version": "3.10.13",
+      "pytorch_version": "2.1.2",
+      "operating_system": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.31",
+      "cpu": "x86_64",
+      "device": "cuda",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "gpu_vram_mb": 24563.5
+    },
+    "accuracy_ci95": [
+      0.9472217105263158,
+      0.951425
+    ],
+    "macro_f1_ci95": [
+      0.9472215806670772,
+      0.9514195636000321
+    ],
+    "mcc_ci95": [
+      0.8944448127189065,
+      0.9028461755837899
+    ],
+    "slices": {
+      "short": {
+        "count": 2109,
+        "macro_f1": 0.9346507502459505,
+        "error_rate": 0.06069227121858701
+      },
+      "medium": {
+        "count": 13195,
+        "macro_f1": 0.953040795019503,
+        "error_rate": 0.046153846153846156
+      },
+      "long": {
+        "count": 22696,
+        "macro_f1": 0.9472639407574035,
+        "error_rate": 0.05216778286922806
+      }
+    }
+  }
+]
