@@ -68,3 +68,21 @@ mlruns/
 # Local GPU transfer copy. Training code lives under task3_gan/drashti/.
 DATA266_Lab1_GPU/
 DATA266_Lab1_GPU.zip
+*.pyc
+hf_cache/
+
+# Final Task 3 checkpoint
+!task3_gan/drashti/checkpoints/
+!task3_gan/drashti/checkpoints/refine_epoch_005.pt
+
+# Keep Task 3 generated predictions and evaluation plots
+!task3_gan/drashti/outputs/
+!task3_gan/drashti/outputs/pred_A2B/
+!task3_gan/drashti/outputs/pred_A2B/*.png
+!task3_gan/drashti/outputs/pred_B2A/
+!task3_gan/drashti/outputs/pred_B2A/*.png
+!task3_gan/drashti/outputs/generator_loss.png
+!task3_gan/drashti/outputs/cycle_loss.png
+!task3_gan/drashti/outputs/identity_loss.png
+!task3_gan/drashti/outputs/discriminator_a_loss.png
+!task3_gan/drashti/outputs/discriminator_b_loss.png

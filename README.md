@@ -1,104 +1,305 @@
-# DATA 266 Lab 1 — Deep Learning Experiments
+# DATA 266 Lab 1
 
-This repository contains the team implementation and evaluation for DATA 266 Lab 1. The lab consists of three from-scratch deep-learning tasks: a character-level GPT-style language model, Yelp Polarity sentiment classification, and unpaired Monet/photo image translation with CycleGAN.
+Deep Learning Experiments
+
+This repository contains the team implementation, training artifacts, evaluation results, and reproducibility evidence for DATA 266 Lab 1.
+
+The lab consists of three deep learning tasks:
+
+1. Character level language modeling with a decoder only Transformer
+2. Yelp Polarity sentiment classification using multiple neural architectures
+3. Unpaired Monet and photograph image translation using CycleGAN
+
+Each team member independently implements and trains models for all three tasks. Member specific source code, checkpoints, outputs, metrics, failure analyses, and results are organized within the corresponding task directories.
 
 ## Contributors
 
-- **Sayani Brahmachari**
-- **Drashti Shah**
+Drashti Shah
 
-Repository: [DATA266-Lab1-Fall2026](https://github.com/DrashtiShah23/DATA266-Lab1-Fall2026)
+Sayani Brahmachari
 
-## Tasks
+Repository: DATA266 Lab1 Fall2026
 
-### Task 1 — Character-level GPT
+## Repository Structure
 
-Task 1 implements a GPT-style language model from scratch at the character level. The model uses learned token and positional embeddings, manually implemented causal multi-head self-attention, layer normalization, feed-forward layers, residual connections, cross-entropy loss, AdamW optimization, warm-up, and cosine learning-rate scheduling.
+```text
+DATA266_Lab1/
+├── task1_llm/
+│   ├── data/
+│   └── drashti/
+│       ├── src/
+│       ├── checkpoints/
+│       ├── outputs/
+│       ├── metrics_report.csv
+│       ├── failure_analysis.md
+│       └── results.md
+│
+├── task2_sentiment/
+│   ├── data/
+│   └── drashti/
+│       ├── src/
+│       ├── checkpoints/
+│       ├── outputs/
+│       ├── metrics_report.csv
+│       ├── failure_analysis.md
+│       └── results.md
+│
+├── task3_gan/
+│   ├── data/
+│   │   ├── monet_jpg/
+│   │   └── photo_jpg/
+│   └── drashti/
+│       ├── src/
+│       │   └── task3_gan.ipynb
+│       ├── checkpoints/
+│       │   └── refine_epoch_005.pt
+│       ├── outputs/
+│       │   ├── pred_A2B/
+│       │   ├── pred_B2A/
+│       │   ├── training_history.csv
+│       │   ├── generator_loss.png
+│       │   ├── cycle_loss.png
+│       │   ├── identity_loss.png
+│       │   ├── discriminator_a_loss.png
+│       │   └── discriminator_b_loss.png
+│       ├── evaluate_local.py
+│       ├── submission.csv
+│       ├── metrics_report.csv
+│       ├── full_metrics_report.csv
+│       ├── failure_analysis.md
+│       └── results.md
+│
+├── reproducibility/
+│   ├── manifests/
+│   └── raw_logs/
+│
+├── report/
+├── lab1/
+├── .gitignore
+├── .gitattributes
+└── README.md
+```
 
-Recorded configuration:
+## Task 1: Character Level Language Model
 
-- 100,000 training sequences and 10,000 validation sequences
-- Block size: 128
-- Embedding size: 256
-- 4 attention heads and 4 layers
-- 10 training epochs
-- 3,236,864 trainable parameters
+Task 1 implements a decoder only Transformer language model from scratch for character level next token prediction.
 
-Recorded final metrics include validation loss **0.9381**, perplexity **2.5550**, bits per character **1.3533**, validation accuracy **0.7048**, generation throughput **489.7 tokens/s**, and peak memory **795.4 MB**.
+Drashti's implementation is located at:
 
-### Task 2 — Yelp Polarity Sentiment Classification
+`task1_llm/drashti/`
 
-Task 2 compares three models trained from scratch without pretrained embeddings or pretrained language models:
+The directory contains the source implementation, trained checkpoint, generated samples, training curves, metrics, failure analysis, and results documentation.
 
-1. Mean-embedding MLP baseline
+Primary files:
+
+`task1_llm/drashti/metrics_report.csv`
+
+`task1_llm/drashti/failure_analysis.md`
+
+`task1_llm/drashti/results.md`
+
+The retained training artifacts include the completed training continuation through epoch 20.
+
+## Task 2: Yelp Polarity Sentiment Classification
+
+Task 2 performs binary sentiment classification on the Yelp Polarity dataset using neural models trained from scratch.
+
+Drashti's implementation is located at:
+
+`task2_sentiment/drashti/`
+
+Three independently trained architectures are evaluated:
+
+1. Baseline mean embedding classifier
 2. TextCNN
 3. Bidirectional GRU
 
-The run used 560,000 training examples, 38,000 test examples, a vocabulary of 214,511 tokens, and sequences padded/truncated to 160 tokens.
+Evaluation artifacts include classification metrics, confidence intervals, calibration analysis, confusion matrices, ROC and PR curves, slice metrics, statistical comparison, prediction auditing, and manual error review.
 
-| Model | Accuracy | Macro-F1 | ROC-AUC | PR-AUC | MCC |
-|---|---:|---:|---:|---:|---:|
-| Baseline | 0.9316 | 0.9316 | 0.9808 | 0.9811 | 0.8632 |
-| TextCNN | 0.9321 | 0.9320 | 0.9854 | 0.9856 | 0.8665 |
-| BiGRU | **0.9494** | **0.9494** | **0.9893** | **0.9896** | **0.8989** |
+Primary files:
 
-The BiGRU achieved the strongest recorded test performance, with a peak memory use of 1,684.8 MB and throughput of 30,846 examples/s.
+`task2_sentiment/drashti/metrics_report.csv`
 
-### Task 3 — Unpaired Monet/Photo Translation
+`task2_sentiment/drashti/failure_analysis.md`
 
-Task 3 implements CycleGAN with two generators, two discriminators, adversarial least-squares loss, cycle-consistency loss, identity loss, replay buffers, checkpoint selection, and bidirectional translation.
+`task2_sentiment/drashti/results.md`
 
-The final executed notebook recorded:
+## Task 3: CycleGAN Image Style Transfer
 
-- Python 3.11.17 and PyTorch 2.14.1+cu130
-- NVIDIA GeForce RTX 5090 with CUDA
-- 256×256 RGB images
-- 300 Monet images and 7,038 photo images
-- Batch size 1, 1,000 steps per epoch, and a 100-epoch training workflow
-- 28,275,336 total parameters
-- TA evaluation using 300 images in each real/generated set
-- Photo → Monet FID: **95.355329**, MiFID: **0.406077**
-- Monet → Photo FID: **99.562875**, MiFID: **0.416181**
-- Average FID: **97.459102**, Average MiFID: **0.411129**
+Task 3 implements CycleGAN for unpaired image translation between photographs and Monet paintings.
 
-The notebook also creates the required `submission.csv` with ID 1 and the reported average FID/MiFID values.
+Drashti's implementation is located at:
+
+`task3_gan/drashti/`
+
+The complete executed notebook is:
+
+`task3_gan/drashti/src/task3_gan.ipynb`
+
+### Final Configuration
+
+| Configuration | Value |
+| --- | ---: |
+| Training epochs | 100 |
+| Steps per epoch | 1000 |
+| Image size | 256 x 256 |
+| Batch size | 1 |
+| Generator base channels | 64 |
+| Discriminator base channels | 64 |
+| Residual blocks | 9 |
+| Cycle weight | 10.0 |
+| Identity weight | 1.0 |
+| Generator learning rate | 0.0002 |
+| Discriminator learning rate | 0.0001 |
+| Adam beta1 | 0.5 |
+| Adam beta2 | 0.999 |
+| Replay buffer capacity | 50 |
+| EMA decay | 0.999 |
+| Parameter count | 28,275,336 |
+
+### Training
+
+The final recorded run completed 100 epochs.
+
+| Metric | Epoch 1 | Epoch 100 |
+| --- | ---: | ---: |
+| Generator loss | 7.1919 | 2.6298 |
+| Cycle loss | 0.5876 | 0.1486 |
+| Identity loss | 0.5753 | 0.2305 |
+| Discriminator A loss | 0.3197 | 0.1433 |
+| Discriminator B loss | 0.3248 | 0.1766 |
+
+Recorded training time was 7866.6 seconds, approximately 2.185 hours.
+
+The complete epoch history is stored in:
+
+`task3_gan/drashti/outputs/training_history.csv`
+
+### Generated Images
+
+Photo to Monet predictions:
+
+`task3_gan/drashti/outputs/pred_A2B/`
+
+Retained predictions: 300
+
+Monet to Photo predictions:
+
+`task3_gan/drashti/outputs/pred_B2A/`
+
+Retained predictions: 300
+
+### Checkpoint
+
+The retained Task 3 checkpoint is:
+
+`task3_gan/drashti/checkpoints/refine_epoch_005.pt`
+
+The checkpoint is managed using Git LFS.
+
+### Final Evaluation
+
+| Metric | Photo to Monet | Monet to Photo | Overall |
+| --- | ---: | ---: | ---: |
+| FID | 95.355329 | 99.562875 | 97.459102 |
+| MiFID | 0.406077 | 0.416181 | 0.411129 |
+| KID | | | 0.052 |
+| Generative precision | | | 0.63 |
+| Generative recall | | | 0.51 |
+| Cycle reconstruction L1 | | | 0.1486 |
+| LPIPS | | | 0.30 |
+| Content preservation cosine similarity | | | 0.81 |
+
+Additional evaluation values are stored in:
+
+`task3_gan/drashti/full_metrics_report.csv`
+
+The submitted FID and MiFID values are preserved in:
+
+`task3_gan/drashti/submission.csv`
+
+### Kaggle
+
+Team: `Pair_Programming_Team_12`
+
+Leaderboard rank: 23
+
+Leaderboard score: -48.9351
+
+### Analysis
+
+Detailed results:
+
+`task3_gan/drashti/results.md`
+
+Failure and stability analysis:
+
+`task3_gan/drashti/failure_analysis.md`
+
+### Local Evaluation
+
+From the repository root:
+
+```bash
+python task3_gan/drashti/evaluate_local.py
+```
 
 ## Reproducibility
 
-The experiments were executed with fixed seed 266. The main deliverable is the executed all-parts Jupyter notebook. Supporting artifacts include model checkpoints, raw training logs, metric reports, generated images, failure analysis, and error-review files.
+Experiment manifests are stored under:
 
-The recorded Task 1 and Task 2 environment used CUDA on an NVIDIA GeForce RTX 4090. The final Task 3 notebook used CUDA on an NVIDIA GeForce RTX 5090. Exact Python and PyTorch versions are recorded in the notebook and report.
+`reproducibility/manifests/`
 
-## Repository contents
+Raw training logs are stored under:
+
+`reproducibility/raw_logs/`
+
+Task 3 manifest:
+
+`reproducibility/manifests/drashti_task3_manifest.json`
+
+Task 3 training log:
+
+`reproducibility/raw_logs/task3_drashti_training.log`
+
+## Data
+
+Raw datasets and machine specific dataset caches are excluded from version control where appropriate.
+
+Task 3 expects:
 
 ```text
-.
-├── README.md
-├── DATA266_Lab1_All_Parts_Docker_executed.ipynb
-├── task1_llm/
-│   ├── checkpoints/
-│   ├── outputs/
-│   ├── raw_logs/
-│   ├── metrics_report.csv
-│   ├── results.md
-│   └── failure_analysis.md
-├── task2_sentiment/
-│   ├── checkpoints/
-│   ├── outputs/
-│   ├── raw_logs/
-│   ├── metrics_report.csv
-│   ├── results.md
-│   └── failure_analysis.md
-└── task3_gan/
-    ├── checkpoints/
-    ├── outputs/
-    ├── full_metrics_report.csv
-    ├── submission.csv
-    └── human_audit_template.csv
+task3_gan/data/
+├── monet_jpg/
+└── photo_jpg/
 ```
 
-## Notes
+Local Hugging Face caches and downloaded dataset caches are excluded through `.gitignore`.
 
-- Raw datasets, credentials, tokens, and machine-specific absolute paths should not be committed.
-- The notebook should be opened and executed in order so that setup, training, evaluation, and output-generation cells run consistently.
-- The PDF/LaTeX technical report is provided as supplementary documentation for the experiment results.
+## Large Files
+
+Large Task 3 model checkpoint files are managed using Git LFS.
+
+Before cloning the checkpoint:
+
+```bash
+git lfs install
+```
+
+After cloning:
+
+```bash
+git lfs pull
+```
+
+## Final Report
+
+The combined team report is stored under:
+
+`report/`
+
+## Version Control Notes
+
+The repository excludes machine specific and generated development artifacts including operating system metadata, Python bytecode, cache directories, local dataset caches, credentials, and secrets.
+
+Large trained model artifacts are managed through Git LFS where required.

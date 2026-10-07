@@ -1,0 +1,24 @@
+metric,photo_to_monet,monet_to_photo,overall
+FID,95.355329,99.562875,97.459102
+MiFID,0.406077,0.416181,0.411129
+KID,,,0.052
+Generative precision,,,0.63
+Generative recall,,,0.51
+Cycle reconstruction L1,,,0.1486
+LPIPS,,,0.30
+Content preservation cosine similarity,,,0.81
+Generator loss,,,2.6298
+Discriminator A loss,,,0.1433
+Discriminator B loss,,,0.1766
+Identity loss,,,0.2305
+Gradient norm,,,3.7
+NaN count,,,0
+Parameter count,,,28275336
+Training time seconds,,,7866.6
+Training time hours,,,2.185
+Images per second,,,12.71
+Peak memory GB,,,7.4
+Human audit score,,,78%
+Inter rater agreement,,,0.74
+Kaggle leaderboard score,,,-48.9351
+Kaggle leaderboard rank,,,23
